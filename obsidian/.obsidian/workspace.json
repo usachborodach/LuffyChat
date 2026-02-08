@@ -22,6 +22,23 @@
             }
           },
           {
+            "id": "d0155fbcfcef53f1",
+            "type": "leaf",
+            "state": {
+              "type": "canvas",
+              "state": {
+                "file": "architecture.canvas",
+                "viewState": {
+                  "x": -208,
+                  "y": -160,
+                  "zoom": 0
+                }
+              },
+              "icon": "lucide-layout-dashboard",
+              "title": "architecture"
+            }
+          },
+          {
             "id": "fe5a33241c079dc8",
             "type": "leaf",
             "state": {
@@ -202,9 +219,10 @@
   },
   "active": "67e549b8fd1a5d44",
   "lastOpenFiles": [
+    "mongo_deploy.md",
+    "tasks.md",
     "architecture.canvas",
     "arсhiе.md",
-    "tasks.md",
     "conventions.md"
   ]
 }
