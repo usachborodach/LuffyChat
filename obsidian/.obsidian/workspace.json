@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "tasks.md",
+                "file": "logbook.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "tasks"
+              "title": "logbook"
             }
           },
           {
@@ -31,23 +31,6 @@
                 "viewState": {
                   "x": -208,
                   "y": -160,
-                  "zoom": 0
-                }
-              },
-              "icon": "lucide-layout-dashboard",
-              "title": "architecture"
-            }
-          },
-          {
-            "id": "fe5a33241c079dc8",
-            "type": "leaf",
-            "state": {
-              "type": "canvas",
-              "state": {
-                "file": "architecture.canvas",
-                "viewState": {
-                  "x": 0,
-                  "y": 2.842170943040401e-14,
                   "zoom": 0
                 }
               },
@@ -219,9 +202,10 @@
   },
   "active": "67e549b8fd1a5d44",
   "lastOpenFiles": [
-    "mongo_deploy.md",
     "tasks.md",
     "architecture.canvas",
+    "logbook.md",
+    "mongo_deploy.md",
     "arсhiе.md",
     "conventions.md"
   ]
