@@ -1,11 +1,13 @@
+import json
 import requests
 
+config = json.loads(open("config.json", encoding='UTF-8').read())
 print('post.py запущен')
-text = input_data()
+text = input()
 data = {
     'text': text,
-    'author': 'Луффи',
+    'author': config['author'],
     'chat': ''
 }
-url = 'http://192.168.1.10:8000/send_message/'
+url = f'http://{config["adress"]}:5000/send_message/'
 requests.post(url, json=data)
