@@ -1,3 +1,4 @@
+import sys
 import json
 import requests
 import logging
@@ -24,7 +25,10 @@ threading.Thread(target=run_server, daemon=True).start()
 print(f'{__name__} запущен')
 
 while True:
-    text = input(f"{config['author']:} ")
+    text = input()
+    sys.stdout.write('\033[F')
+    sys.stdout.write('\033[K')
+    print(f"{config['author']}: {text}")
     data_to_send = {
         'text': text,
         'author': config['author'],
