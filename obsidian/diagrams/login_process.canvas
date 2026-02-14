@@ -1,0 +1,12 @@
+{
+	"nodes":[
+		{"id":"b7143c3a1a922fc9","x":-833,"y":-431,"width":213,"height":251,"type":"group","label":"clients"},
+		{"id":"c3467a768a497a2f","type":"text","text":"route: /login/\nheaders:\n```json\n{\n  \"username\": \"user1\",\n  \"password\": \"bebra91\"\n}\n```","x":-580,"y":-580,"width":300,"height":230},
+		{"id":"4ced88a4f7b25b13","type":"text","text":"user1","x":-780,"y":-380,"width":100,"height":60},
+		{"id":"87195b4807028e3e","type":"text","text":"user2","x":-780,"y":-300,"width":100,"height":60},
+		{"id":"49c32e6f9d0564b4","type":"text","text":"RestAPI","x":-240,"y":-380,"width":120,"height":60}
+	],
+	"edges":[
+		{"id":"d7bdf34cd78d8b50","fromNode":"4ced88a4f7b25b13","fromSide":"right","toNode":"49c32e6f9d0564b4","toSide":"left"}
+	]
+}

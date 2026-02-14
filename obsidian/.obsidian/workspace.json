@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "3b744145c2972d45",
+        "id": "6a3e70775cdbdd3f",
         "type": "tabs",
         "children": [
           {
-            "id": "67e549b8fd1a5d44",
+            "id": "975bb7e48d4b8529",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -19,23 +19,6 @@
               },
               "icon": "lucide-file",
               "title": "tasks"
-            }
-          },
-          {
-            "id": "d0155fbcfcef53f1",
-            "type": "leaf",
-            "state": {
-              "type": "canvas",
-              "state": {
-                "file": "architecture.canvas",
-                "viewState": {
-                  "x": -208,
-                  "y": -160,
-                  "zoom": 0
-                }
-              },
-              "icon": "lucide-layout-dashboard",
-              "title": "architecture"
             }
           }
         ]
@@ -200,13 +183,17 @@
       "bases:Create new base": false
     }
   },
-  "active": "67e549b8fd1a5d44",
+  "active": "975bb7e48d4b8529",
   "lastOpenFiles": [
+    "diagrams/login_process.canvas",
+    "diagrams/common_structure.canvas",
+    "Untitled.md",
+    "Untitled.base",
+    "diagrams",
     "logbook.md",
+    "conventions.md",
     "tasks.md",
-    "architecture.canvas",
     "mongo_deploy.md",
-    "arсhiе.md",
-    "conventions.md"
+    "arсhiе.md"
   ]
 }
