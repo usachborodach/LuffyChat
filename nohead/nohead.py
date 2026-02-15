@@ -17,8 +17,9 @@ print(history)
 def listen():
     received_data = request.get_json()
     in_message = f"{received_data['author']}: {received_data['text']}"
+    print(in_message)
     with open('history.log', 'a', encoding='UTF-8') as file:
-        file.write(in_message)
+        file.write(f'{in_message}\n')
     return 'done'
 
 def run_server():
@@ -35,7 +36,7 @@ while True:
     out_message = f"{config['author']}: {text}"
     print(out_message)
     with open('history.log', 'a', encoding='UTF-8') as file:
-        file.write(out_message)
+        file.write(f'{out_message}\n')
 
     data_to_send = {
         'text': text,

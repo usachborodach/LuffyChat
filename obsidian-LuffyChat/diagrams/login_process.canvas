@@ -14,7 +14,7 @@
 		{"id":"49c32e6f9d0564b4","type":"text","text":"# RestAPI","x":-240,"y":-380,"width":160,"height":60,"color":"2"},
 		{"id":"f9e3d397fbb30166","type":"text","text":"# Backend","x":140,"y":-383,"width":160,"height":60,"color":"1"},
 		{"id":"4f21817eb8402fb0","type":"text","text":"# Sender","x":-240,"y":-220,"width":160,"height":60,"color":"3"},
-		{"id":"6c534b93d7114216","x":-180,"y":-40,"width":400,"height":338,"type":"file","file":"Pasted image 20260215142744.png"}
+		{"id":"6c534b93d7114216","type":"file","file":"Pasted image 20260215142744.png","x":-180,"y":-40,"width":400,"height":338}
 	],
 	"edges":[
 		{"id":"d7bdf34cd78d8b50","fromNode":"4ced88a4f7b25b13","fromSide":"right","toNode":"49c32e6f9d0564b4","toSide":"left","label":"1. Шлёт сообщение"},
