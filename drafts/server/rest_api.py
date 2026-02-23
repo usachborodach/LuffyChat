@@ -31,7 +31,14 @@ async def send_message(message_data: MessageModel):
         raise HTTPException(status_code=500, detail=f"Error saving message: {str(e)}")
 
 if __name__ == "__main__":
-    uvicorn.run("rest_api:app", host="0.0.0.0", port=8000, reload=True)
+    uvicorn.run(
+        "rest_api:app",
+        host="0.0.0.0",
+        port=8443,
+        reload=True,
+        ssl_keyfile="../certs/key.pem",
+        ssl_certfile="../certs/cert.pem"
+    )
 
 # mongo.client.close()
 """
