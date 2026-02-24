@@ -11,17 +11,14 @@
             "id": "975bb7e48d4b8529",
             "type": "leaf",
             "state": {
-              "type": "canvas",
+              "type": "markdown",
               "state": {
-                "file": "diagrams/login_process.canvas",
-                "viewState": {
-                  "x": 220,
-                  "y": -25,
-                  "zoom": -0.6308460185285683
-                }
+                "file": "tasks.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-layout-dashboard",
-              "title": "login_process"
+              "icon": "lucide-file",
+              "title": "tasks"
             }
           }
         ]
@@ -188,10 +185,10 @@
   },
   "active": "79518c55ff122b3e",
   "lastOpenFiles": [
+    "diagrams/login_process.canvas",
     "tasks.md",
     "Pasted image 20260215142744.png",
     "logbook.md",
-    "diagrams/login_process.canvas",
     "diagrams/common_structure.canvas",
     "conventions.md",
     "Untitled.md",
