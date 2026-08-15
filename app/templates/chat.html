@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="chat-container">
+    <div class="chat-header">
+        <h2>Chat with {{ user.nickname }}</h2>
+        <a href="{{ url_for('chat.index') }}">← Back</a>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+        {% for msg in messages %}
+        <div class="message {{ 'mine' if msg.sender_id == current_user.id else 'other' }}">
+            <span class="sender">{{ msg.sender.nickname }}</span>
+            <span class="content">{{ msg.content }}</span>
+            <span class="time">{{ msg.timestamp.strftime('%H:%M') }}</span>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="chat-input">
+        <input type="text" id="message-input" placeholder="Type a message...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+</div>
+
+<script>
+    const receiverId = {{ user.id }};
+    
+    function sendMessage() {
+        const input = document.getElementById('message-input');
+        const content = input.value.trim();
+        if (!content) return;
+        
+        fetch('/send', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+            body: `receiver_id=${receiverId}&content=${encodeURIComponent(content)}`
+        }).then(() => {
+            input.value = '';
+            loadMessages();
+        });
+    }
+
+    function loadMessages() {
+        fetch(`/messages/${receiverId}`)
+            .then(res => res.json())
+            .then(messages => {
+                const container = document.getElementById('chat-messages');
+                container.innerHTML = messages.map(m => `
+                    <div class="message ${m.is_mine ? 'mine' : 'other'}">
+                        <span class="content">${m.content}</span>
+                        <span class="time">${new Date(m.timestamp).toLocaleTimeString()}</span>
+                    </div>
+                `).join('');
+                container.scrollTop = container.scrollHeight;
+            });
+    }
+
+    document.getElementById('message-input').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') sendMessage();
+    });
+
+    setInterval(loadMessages, 3000);
+    loadMessages();
+</script>
+{% endblock %}

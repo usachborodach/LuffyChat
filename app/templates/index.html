@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="dashboard">
+    <div class="search-section">
+        <h3>Search Users</h3>
+        <input type="text" id="search-input" placeholder="Search by username or nickname...">
+        <div id="search-results"></div>
+    </div>
+
+    <div class="users-section">
+        <h3>Users</h3>
+        <ul class="user-list">
+            {% for user in users %}
+            <li>
+                <a href="{{ url_for('chat.chat_with_user', user_id=user.id) }}">
+                    {{ user.nickname }} ({{ user.username }})
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="groups-section">
+        <h3>Your Groups</h3>
+        <a href="{{ url_for('groups.create_group') }}" class="btn">Create Group</a>
+        <ul class="group-list">
+            {% for group in groups %}
+            <li>
+                <a href="{{ url_for('groups.view_group', group_id=group.id) }}">{{ group.name }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+<script>
+    document.getElementById('search-input').addEventListener('input', function() {
+        const q = this.value;
+        if (q.length < 2) {
+            document.getElementById('search-results').innerHTML = '';
+            return;
+        }
+        fetch(`/search?q=${q}`)
+            .then(res => res.json())
+            .then(data => {
+                const container = document.getElementById('search-results');
+                container.innerHTML = data.map(u => 
+                    `<div><a href="/chat/${u.id}">${u.nickname} (${u.username})</a></div>`
+                ).join('');
+            });
+    });
+</script>
+{% endblock %}

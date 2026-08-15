@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="auth-form">
+    <h2>Create New Group</h2>
+    <form method="POST">
+        <input type="text" name="name" placeholder="Group Name" required>
+        <button type="submit">Create Group</button>
+    </form>
+    <a href="{{ url_for('chat.index') }}">Cancel</a>
+</div>
+{% endblock %}

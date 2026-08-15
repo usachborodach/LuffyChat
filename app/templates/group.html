@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="chat-container">
+    <div class="chat-header">
+        <h2>{{ group.name }}</h2>
+        <a href="{{ url_for('chat.index') }}">← Back</a>
+    </div>
+    <div class="members-section">
+        <h4>Members:</h4>
+        <ul>
+            {% for member in members %}
+            <li>{{ member.nickname }}</li>
+            {% endfor %}
+        </ul>
+        {% if group.created_by == current_user.id %}
+        <div class="invite-section">
+            <h4>Invite User</h4>
+            <input type="text" id="invite-username" placeholder="Username">
+            <button onclick="inviteUser()">Invite</button>
+        </div>
+        {% endif %}
+    </div>
+    <div class="chat-messages" id="group-messages">
+        {% for msg in messages %}
+        <div class="message {{ 'mine' if msg.sender_id == current_user.id else 'other' }}">
+            <span class="sender">{{ msg.sender.nickname }}</span>
+            <span class="content">{{ msg.content }}</span>
+            <span class="time">{{ msg.timestamp.strftime('%H:%M') }}</span>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="chat-input">
+        <input type="text" id="group-message-input" placeholder="Type a message...">
+        <button onclick="sendGroupMessage()">Send</button>
+    </div>
+</div>
+
+<script>
+    const groupId = {{ group.id }};
+    
+    function sendGroupMessage() {
+        const input = document.getElementById('group-message-input');
+        const content = input.value.trim();
+        if (!content) return;
+        
+        fetch('/send', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+            body: `group_id=${groupId}&content=${encodeURIComponent(content)}`
+        }).then(() => {
+            input.value = '';
+            loadGroupMessages();
+        });
+    }
+
+    function loadGroupMessages() {
+        fetch(`/groups/${groupId}/messages`)
+            .then(res => res.json())
+            .then(messages => {
+                const container = document.getElementById('group-messages');
+                container.innerHTML = messages.map(m => `
+                    <div class="message ${m.is_mine ? 'mine' : 'other'}">
+                        <span class="sender">${m.sender_name}</span>
+                        <span class="content">${m.content}</span>
+                        <span class="time">${new Date(m.timestamp).toLocaleTimeString()}</span>
+                    </div>
+                `).join('');
+                container.scrollTop = container.scrollHeight;
+            });
+    }
+
+    function inviteUser() {
+        const username = document.getElementById('invite-username').value;
+        fetch(`/groups/${groupId}/invite`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+            body: `user_id=${username}`
+        }).then(res => {
+            if (res.ok) alert('User invited!');
+            else alert('Failed to invite user');
+        });
+    }
+
+    document.getElementById('group-message-input').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') sendGroupMessage();
+    });
+
+    setInterval(loadGroupMessages, 3000);
+    loadGroupMessages();
+</script>
+{% endblock %}
